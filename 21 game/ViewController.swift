@@ -104,6 +104,7 @@ class ViewController: UIViewController {
                     circle2.frame = CGRect(x: circle2.center.x,
                                            y: circle2.center.y,
                                            width: circle2.frame.width + 20, height: circle2.frame.width + 20)
+                    circle2.backgroundColor = .red
 
             }
         }
