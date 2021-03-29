@@ -7,6 +7,7 @@
 
 import UIKit
 
+
 class ViewController: UIViewController {
     
     @IBOutlet weak var circleView1: CircleView!
@@ -25,6 +26,8 @@ class ViewController: UIViewController {
         
         // Do any additional setup after loading the view.
     }
+    
+    
 
     @IBAction func panAction1(_ gesture: UIPanGestureRecognizer) {
         
@@ -111,7 +114,8 @@ class ViewController: UIViewController {
                     bigCircle.frame = CGRect(x: bigCircle.center.x,
                                            y: bigCircle.center.y,
                                            width: bigCircle.frame.width + 30, height: bigCircle.frame.width + 30)
-                    bigCircle.backgroundColor = .red
+                    
+                    bigCircle.backgroundColor = .random()
 
             }
         }
@@ -140,4 +144,14 @@ class ViewController: UIViewController {
     }
     
 }
+
+extension UIColor {
+    static func random() -> UIColor {
+        return UIColor(red: .random(in: 0...1),
+                       green: .random(in: 0...1),
+                       blue: .random(in: 0...1),
+                       alpha: 1.0)
+    }
+}
+
 
