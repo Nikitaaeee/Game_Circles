@@ -99,12 +99,19 @@ class ViewController: UIViewController {
         for circle1 in circlesArray {
             for circle2 in circlesArray {
                 let l = (pow(pow((circle1.center.x - circle2.center.x),2) +                 pow((circle1.center.y - circle2.center.y),2),0.5))
+                
                 if (!circle1.isHidden && !circle2.isHidden && circle1 != circle2 && l <= (circle1.frame.width / 2) + (circle2.frame.width / 2)) {
-                    circle1.isHidden = true
-                    circle2.frame = CGRect(x: circle2.center.x,
-                                           y: circle2.center.y,
-                                           width: circle2.frame.width + 20, height: circle2.frame.width + 20)
-                    circle2.backgroundColor = .red
+                    var bigCircle = circle1
+                    var smallCircle = circle2
+                    if (bigCircle.frame.width < smallCircle.frame.width) {
+                        bigCircle = circle2
+                        smallCircle = circle1
+                    }
+                    smallCircle.isHidden = true
+                    bigCircle.frame = CGRect(x: bigCircle.center.x,
+                                           y: bigCircle.center.y,
+                                           width: bigCircle.frame.width + 30, height: bigCircle.frame.width + 30)
+                    bigCircle.backgroundColor = .red
 
             }
         }
