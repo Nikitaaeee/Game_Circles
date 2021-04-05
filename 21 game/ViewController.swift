@@ -34,20 +34,7 @@ class ViewController: UIViewController {
         actionDesciption(gesture)
         print(circleView1.center.x - circleView2.center.x)
         
-       /* let circleViewX = circleView1.frame.minX
-        let circleViewY = circleView1.frame.minY
-        let circleViewH = circleView1.frame.height
-        let circleViewW = circleView1.frame.width
-        
-        if circleView1.center.x - circleView2.center.x < 120 {
-            circleView2.isHidden = true
-            circleView1.frame = CGRect(x: circleViewX,
-                                       y: circleViewY,
-                                       width: circleViewW + 10,
-                                       height: circleViewW + 10)
-        }
-        gesture.setTranslation(.zero, in: view)
-        */
+       
 
     }
     
@@ -111,11 +98,27 @@ class ViewController: UIViewController {
                         smallCircle = circle1
                     }
                     smallCircle.isHidden = true
-                    bigCircle.frame = CGRect(x: bigCircle.center.x,
-                                           y: bigCircle.center.y,
-                                           width: bigCircle.frame.width + 30, height: bigCircle.frame.width + 30)
                     
-                    bigCircle.backgroundColor = .random()
+                    
+                    UIView.animate(withDuration: 1, delay: 0, options: .curveEaseInOut, animations: {
+                        bigCircle.frame = CGRect(x: bigCircle.center.x,
+                                                 y: bigCircle.center.y,
+                                                 width: bigCircle.frame.width  , height: bigCircle.frame.width
+                                            )
+                        // bigCircle.layer.cornerRadius += 10
+                        bigCircle.transform.a += 0.3
+                        bigCircle.transform.d += 0.3
+                        
+                    })
+                   /* bigCircle.frame = CGRect(x: bigCircle.center.x,
+                                           y: bigCircle.center.y,
+                                           width: bigCircle.frame.width + 30, height: bigCircle.frame.width + 30)*/
+                    bigCircle.center = smallCircle.center
+
+                    
+                    UIView.animate(withDuration: 1, animations: {
+                        bigCircle.backgroundColor = .random()
+                    })
 
             }
         }
